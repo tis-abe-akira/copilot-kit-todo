@@ -10,13 +10,13 @@ AI機能を搭載したNext.js 14製のTodoアプリケーションです。Copi
 - 📋 **直感的UI**: シンプルで使いやすいタスク管理インターフェース
 - 🎨 **モダンデザイン**: Tailwind CSS + shadcn/ui + Framer Motionによる美しいアニメーション
 - ⚡ **リアルタイム更新**: タスクの状態変更が即座に反映
-- 🔒 **環境変数管理**: APIキーの安全な管理
+- 🔒 **セルフホスティング**: OpenAI APIを直接使用、ロックインなし
 
 ## 技術スタック
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
-- **AI**: CopilotKit
+- **AI**: CopilotKit + OpenAI API
 - **Styling**: Tailwind CSS
 - **UI Components**: Radix UI (shadcn/ui)
 - **Animations**: Framer Motion
@@ -30,10 +30,12 @@ npm install
 ```
 
 2. 環境変数の設定:
-`.env.local`ファイルを作成し、CopilotKitのAPIキーを設定:
+`.env.local`ファイルを作成し、OpenAI APIキーを設定:
 ```bash
-NEXT_PUBLIC_COPILOTKIT_API_KEY=your_copilotkit_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
+
+**注意**: OpenAI APIキーは[OpenAI Platform](https://platform.openai.com/api-keys)から取得できます。
 
 3. 開発サーバーの起動:
 ```bash
@@ -68,8 +70,11 @@ npm run lint     # ESLint実行
 
 ```
 ├── app/
-│   ├── layout.tsx     # ルートレイアウト（CopilotKit設定）
-│   └── page.tsx       # メインページ
+│   ├── api/
+│   │   └── copilotkit/
+│   │       └── route.ts      # OpenAI API統合エンドポイント
+│   ├── layout.tsx            # ルートレイアウト（CopilotKit設定）
+│   └── page.tsx              # メインページ
 ├── components/
 │   ├── AddTodo.tsx    # タスク追加コンポーネント
 │   ├── Task.tsx       # 個別タスクコンポーネント
