@@ -1,25 +1,17 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "CopilotKit Todos",
-  description: "A simple todo app using CopilotKit",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Suspense>{children}</Suspense>
-      </body>
-    </html>
-  );
+ 
+import { ReactNode } from "react";
+import { CopilotKit } from "@copilotkit/react-core"; 
+ 
+export default function RootLayout({ children }: { children: ReactNode }) {
+    return (
+      <html lang="en">
+        <body> 
+          {/* Use the public api key you got from Copilot Cloud  */}
+          <CopilotKit publicApiKey={process.env.NEXT_PUBLIC_COPILOTKIT_API_KEY}> 
+            {children}
+          </CopilotKit>
+        </body>
+      </html>
+    );
 }
