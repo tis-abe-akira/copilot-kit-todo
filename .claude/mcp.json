@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "mastra": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "sitemcp@latest",
+        "https://mastra.ai/ja/docs",
+        "-m",
+        "/components/**"
+      ]
+    },
+    "copilotkit": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "sitemcp@latest",
+        "https://docs.copilotkit.ai/",
+        "-m",
+        "/components/**"
+      ]
+    }
+  }
+}
+
+
