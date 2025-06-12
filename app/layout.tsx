@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <html lang="en">
         <body> 
           {/* Use the public api key you got from Copilot Cloud  */}
-          <CopilotKit publicApiKey={process.env.NEXT_PUBLIC_COPILOTKIT_API_KEY}> 
+          <CopilotKit runtimeUrl="/api/copilotkit"> 
             {children}
           </CopilotKit>
         </body>
